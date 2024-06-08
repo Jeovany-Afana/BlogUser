@@ -1,0 +1,84 @@
+{% load static %}
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="{% static 'login/assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'login/assets/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'login/assets/css/style.css' %}" rel="stylesheet">
+    <title>Login</title>
+      <style>
+      
+          h3{
+              color: red;
+          }
+          input[type='submit']
+          {
+              background-color: #01cc66;
+              border: none;
+              font-weight: bold;
+          }
+      </style>
+  </head>
+  <body>
+    <section class="_form_05">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="_form-05-box">
+              <div class="row">
+                <div class="col-sm-5 _lk_nb">
+                  <div class="form-05-box-a">
+                    <div class="_form_05_logo">
+                      <h2>smart</h2>
+                      <p>Login using social media to get quick access</p>
+                    </div>
+                    <div class="_form_05_socialmedia">
+                      <ol>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>Sign With Facebook</li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>Sign With Twitter</li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a>Sign With Google</li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-7 _nb-pl">
+                <form method="POST" action="login"  class="_btn_04">
+                {% csrf_token %}
+                  <div class="_mn_df">
+                    <div class="main-head">
+                      <h2>Login to your account</h2>
+                        {% for message in messages %}
+                        <h3>{{ message }}</h3>
+                        {% endfor %}
+                    </div>
+
+          
+                        <label class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Enter User Email" aria-required="true">
+                        </label>
+                  
+                        <label class="form-group">
+                            <input type="password" name="password" class="form-control" placeholder="Enter Password" aria-required="true">
+                        </label>
+
+                      <div class="_btn_04">
+                        <input type="submit" value="Login">
+                      </div>
+                    </div>
+                 <a href="{% url 'register' %}">Don't have an account ? Register Now</a>
+                </form>
+                
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+  </body>
+</html>
